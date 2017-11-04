@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Psychic Game</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<h1>The Psychic Game</h1>
+
+	<p>Guess what letter I'm thinking of</p>
+
+	<p>Wins: <span id="wins-number">0</span></p>
+
+	<p>Losses: <span id="losses-number">0</span></p>
+
+	<p>Guesses Left: <span id="guesses-number">9</span></p>
+
+	<p>Your Guesses So Far: <span id="guesses-list"> </span></p>
+
+	<button id="reset">Start Over</button>
+
+	<script type="text/javascript">		
+
+				
+$(document).ready(function() {
+
+	
+
+	var wins = 0;
+	var losses = 0;
+	var guessesLeft = 9;
+	var guessesSoFar = null;
+	var letter = null;
+
+
+
+	function letterInit() {
+		function randLetter() {
+	  		var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+	  		var letter = letters[Math.floor(Math.random() * letters.length)];
+	  		return letter;
+		}
+
+
+		
+		correctLetter = randLetter();
+		console.log("Letter to guess: " + correctLetter);
+	}
+
+	letterInit();
+
+
+	$(document).keyup( function(e) {
+
+		var key = null;
+
+		switch(e.keyCode){
+			case 65	:	console.log('letter guessed: a'); var key = "a"; $('#guesses-list').append(" a");	break;	// a
+			case 67	:	console.log('letter guessed: b'); var key = "b"; $('#guesses-list').append(" c");	break;	// c
+			case 66	:	console.log('letter guessed: c'); var key = "c"; $('#guesses-list').append(" b");	break;	// b
+			case 68	:	console.log('letter guessed: d'); var key = "d"; $('#guesses-list').append(" d");	break;	// d
+			case 69	:	console.log('letter guessed: e'); var key = "e"; $('#guesses-list').append(" e");	break;	// e
+			case 70	:	console.log('letter guessed: f'); var key = "f"; $('#guesses-list').append(" f");	break;	// f
+			case 71	:	console.log('letter guessed: g'); var key = "g"; $('#guesses-list').append(" g");	break;	// g
+			case 72	:	console.log('letter guessed: h'); var key = "h"; $('#guesses-list').append(" h");	break;	// h
+			case 73	:	console.log('letter guessed: i'); var key = "i"; $('#guesses-list').append(" i");	break;	// i
+			case 74	:	console.log('letter guessed: j'); var key = "j"; $('#guesses-list').append(" j");	break;	// j
+			case 75	:	console.log('letter guessed: k'); var key = "k"; $('#guesses-list').append(" k");	break;	// k
+			case 76	:	console.log('letter guessed: l'); var key = "l"; $('#guesses-list').append(" l");	break;	// l
+			case 77	:	console.log('letter guessed: m'); var key = "m"; $('#guesses-list').append(" m");	break;	// m
+			case 78	:	console.log('letter guessed: n'); var key = "n"; $('#guesses-list').append(" n");	break;	// n
+			case 79	:	console.log('letter guessed: o'); var key = "o"; $('#guesses-list').append(" o");	break;	// o
+			case 80	:	console.log('letter guessed: p'); var key = "p"; $('#guesses-list').append(" p");	break;	// p
+			case 81	:	console.log('letter guessed: q'); var key = "q"; $('#guesses-list').append(" q");	break;	// q
+			case 82	:	console.log('letter guessed: r'); var key = "r"; $('#guesses-list').append(" r"); 	break;	// r
+			case 83	:	console.log('letter guessed: s'); var key = "s"; $('#guesses-list').append(" s");	break;	// s
+			case 84	:	console.log('letter guessed: t'); var key = "t"; $('#guesses-list').append(" t");	break;	// t
+			case 85	:	console.log('letter guessed: u'); var key = "u"; $('#guesses-list').append(" u");	break;	// u
+			case 86	:	console.log('letter guessed: v'); var key = "v"; $('#guesses-list').append(" v");	break;	// v
+			case 87	:	console.log('letter guessed: w'); var key = "w"; $('#guesses-list').append(" w");	break;	// w
+			case 88	:	console.log('letter guessed: x'); var key = "x"; $('#guesses-list').append(" x");	break;	// x
+			case 89	:	console.log('letter guessed: y'); var key = "y"; $('#guesses-list').append(" y");	break;	// y
+			case 90	:	console.log('letter guessed: z'); var key = "z"; $('#guesses-list').append(" z");	break;	// z
+		};
+
+
+		if ( key != null ){
+			if ( correctLetter == key ) {
+				console.log("correct!");
+				wins++;
+				console.log("wins:" + wins);
+				$('#wins-number').html(wins);
+				$('#guesses-list').empty();
+				letterInit();
+			} else {
+				guessesLeft--;
+				if ( guessesLeft < 1 ) {
+					losses++;
+					console.log("Losses: " + losses);
+					guessesLeft = 9;
+					$('#losses-number').html(losses);
+					$('#guesses-list').empty();
+					letterInit();
+				};
+				console.log("Guesses Left: " + guessesLeft);
+				$('#guesses-number').html(guessesLeft);
+			};
+		};
+
+
+
+		
+	})
+
+
+
+})
+
+
+		
+	
+
+	</script>
+</body>
+</html>
